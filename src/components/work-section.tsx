@@ -63,24 +63,25 @@ export default function Work() {
 
         <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden">
           {/* Left Sidebar (Company Logos & Names) */}
-          <div className="w-full md:w-1/3 bg-gray-900 rounded-l-2xl p-6 space-y-4">
+          <div className="w-full md:w-1/3 bg-gray-900 rounded-l-2xl p-6 space-y-4 relative">
             {workExperiences.map((work) => (
               <motion.button
                 key={work.id}
                 onClick={() => setSelectedWork(work)}
                 whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                animate={selectedWork.id === work.id ? { scale: 1.1 } : { scale: 1 }}
+                transition={{ type: "spring", stiffness: 100 }}
                 className={`relative p-4 flex items-center space-x-4 rounded-lg w-full transition-all ${
                   selectedWork.id === work.id
-                    ? "bg-gradient-to-r from-indigo-600 to-purple-700 text-white shadow-lg relative"
+                    ? " text-white shadow-lg relative"
                     : "bg-transparent hover:bg-gray-800 text-gray-300"
                 }`}
               >
-                {/* Neon Glow Effect */}
+                {/* Left Purple Glow Effect */}
                 {selectedWork.id === work.id && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg"
+                    className="absolute left-0 top-0 h-full w-2 bg-gradient-to-b from-purple-500 to-indigo-500 rounded-l-lg"
                     transition={{ duration: 0.3 }}
                   />
                 )}
